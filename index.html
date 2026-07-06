@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Command Center Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Global Layout & Theme Foundation -->
+    <div class="dashboard-container">
+        
+        <!-- Section A: Top Navigation & Global Metrics Bar -->
+        <header class="top-bar">
+            <div class="live-indicator-group">
+                <div class="digital-clock">
+                    <span id="clock"></span>
+                    <span class="live-badge">● LIVE</span>
+                </div>
+            </div>
+            
+            <div class="global-metrics">
+                <div class="metric-card">
+                    <div class="metric-icon user-icon">👤</div>
+                    <div class="metric-content">
+                        <span class="metric-label">Active Users</span>
+                        <span class="metric-value" id="active-users">2,847</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon chat-icon">💬</div>
+                    <div class="metric-content">
+                        <span class="metric-label">Live Chats</span>
+                        <span class="metric-value" id="live-chats">342</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Section B: Main Financial Pulse -->
+        <section class="financial-pulse">
+            <div class="finance-card revenue-card">
+                <h2>Today's Revenue</h2>
+                <div class="finance-amount">
+                    <span class="amount-value">$47,285</span>
+                    <span class="growth-indicator">↑ +12.5%</span>
+                </div>
+                <canvas id="revenue-chart" class="glass-chart"></canvas>
+            </div>
+            
+            <div class="finance-card profit-card">
+                <h2>Today's Profit</h2>
+                <div class="finance-amount">
+                    <span class="amount-value">$18,642</span>
+                    <span class="growth-indicator">↑ +8.3%</span>
+                </div>
+                <canvas id="profit-chart" class="glass-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Section C: Live Operations & Pending Visas Queue -->
+        <section class="operations-section">
+            <div class="pending-visas-queue">
+                <h3>Pending Visas Queue</h3>
+                <div class="visa-list">
+                    <div class="visa-item in-review">
+                        <div class="visa-header">
+                            <span class="visa-id">VISA-2847</span>
+                            <span class="visa-status in-review-tag">In Review</span>
+                        </div>
+                        <p class="visa-applicant">Sarah Mitchell</p>
+                        <p class="visa-type">Tourist Visa - USA</p>
+                    </div>
+                    
+                    <div class="visa-item urgent">
+                        <div class="visa-header">
+                            <span class="visa-id">VISA-2846</span>
+                            <span class="visa-status urgent-tag">Urgent</span>
+                        </div>
+                        <p class="visa-applicant">Ahmed Hassan</p>
+                        <p class="visa-type">Business Visa - Germany</p>
+                    </div>
+                    
+                    <div class="visa-item in-review">
+                        <div class="visa-header">
+                            <span class="visa-id">VISA-2845</span>
+                            <span class="visa-status in-review-tag">In Review</span>
+                        </div>
+                        <p class="visa-applicant">Maria Garcia</p>
+                        <p class="visa-type">Student Visa - Canada</p>
+                    </div>
+                    
+                    <div class="visa-item completed">
+                        <div class="visa-header">
+                            <span class="visa-id">VISA-2844</span>
+                            <span class="visa-status completed-tag">Completed</span>
+                        </div>
+                        <p class="visa-applicant">James Wu</p>
+                        <p class="visa-type">Work Visa - Australia</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-feed">
+                <h3>Live Activity Feed</h3>
+                <div class="feed-items">
+                    <div class="feed-item">
+                        <span class="feed-time">14:32</span>
+                        <span class="feed-text">VISA-2847 moved to final review</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">14:28</span>
+                        <span class="feed-text">New application received: VISA-2848</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">14:21</span>
+                        <span class="feed-text">Document verification completed</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">14:15</span>
+                        <span class="feed-text">System backup initiated</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">14:08</span>
+                        <span class="feed-text">Agent rotation: 3 new agents online</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section D: Interaction Hub (Live Chat Preview) -->
+        <section class="interaction-hub">
+            <h3>Live Chat Queue</h3>
+            <div class="chat-grid">
+                <div class="chat-row">
+                    <div class="user-avatar online">
+                        <span>JD</span>
+                    </div>
+                    <div class="chat-preview">
+                        <p class="chat-user">John Davis</p>
+                        <p class="chat-message">Question about visa processing time...</p>
+                    </div>
+                    <div class="chat-visualizer">
+                        <div class="waveform">
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-row">
+                    <div class="user-avatar online">
+                        <span>EP</span>
+                    </div>
+                    <div class="chat-preview">
+                        <p class="chat-user">Elena Petrov</p>
+                        <p class="chat-message">Help needed with document upload...</p>
+                    </div>
+                    <div class="chat-visualizer">
+                        <div class="waveform">
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-row">
+                    <div class="user-avatar online">
+                        <span>MB</span>
+                    </div>
+                    <div class="chat-preview">
+                        <p class="chat-user">Marcus Brown</p>
+                        <p class="chat-message">Status update on application...</p>
+                    </div>
+                    <div class="chat-visualizer">
+                        <div class="waveform">
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-row">
+                    <div class="user-avatar online">
+                        <span>SL</span>
+                    </div>
+                    <div class="chat-preview">
+                        <p class="chat-user">Sophie Laurent</p>
+                        <p class="chat-message">Requesting interview appointment...</p>
+                    </div>
+                    <div class="chat-visualizer">
+                        <div class="waveform">
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
