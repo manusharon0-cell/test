@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Analytics Dashboard</title>
+    <link rel="stylesheet" href="business-styles.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">📊 BUSINESS HUB</div>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="profit">
+                    <span class="icon">💰</span> Profit Dashboard
+                </button>
+                <button class="nav-item" data-tab="revenue">
+                    <span class="icon">🤖</span> AI Revenue Engine
+                </button>
+                <button class="nav-item" data-tab="refunds">
+                    <span class="icon">↩️</span> Refund Management
+                </button>
+                <button class="nav-item" data-tab="payouts">
+                    <span class="icon">🏦</span> Agency Payouts
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- PROFIT DASHBOARD TAB -->
+            <section id="profit" class="tab-content active">
+                <div class="tab-header">
+                    <h1>💰 Profit Dashboard - Revenue Breakdown</h1>
+                    <div class="time-filter">
+                        <select id="profit-period">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month" selected>This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-grid">
+                    <div class="summary-card total">
+                        <div class="card-icon">📈</div>
+                        <div class="card-content">
+                            <span class="card-label">Total Profit</span>
+                            <span class="card-value">₹<span id="total-profit">125,840</span></span>
+                            <span class="card-change">↑ +18.3% from last period</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon">✈️</div>
+                        <div class="card-content">
+                            <span class="card-label">Flights Markup</span>
+                            <span class="card-value">₹<span id="flights-markup">45,200</span></span>
+                            <span class="card-change">245 transactions</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon">🛂</div>
+                        <div class="card-content">
+                            <span class="card-label">Visas Markup</span>
+                            <span class="card-value">₹<span id="visas-markup">28,000</span></span>
+                            <span class="card-change">28 visas processed</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon">📦</div>
+                        <div class="card-content">
+                            <span class="card-label">Packages Revenue</span>
+                            <span class="card-value">₹<span id="packages-revenue">32,640</span></span>
+                            <span class="card-change">16 packages sold</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Breakdown by Category -->
+                <div class="card glass-card">
+                    <h2>Revenue Breakdown by Category</h2>
+                    <div class="revenue-breakdown">
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span class="category-name">✈️ Flights</span>
+                                <span class="category-amount">₹45,200</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 36%"></div>
+                            </div>
+                            <div class="breakdown-details">
+                                <span>Fixed Markup: ₹500 per ticket × 245 = ₹45,200</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span class="category-name">🛂 Visas</span>
+                                <span class="category-amount">₹28,000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 22%; background: #10b981;"></div>
+                            </div>
+                            <div class="breakdown-details">
+                                <span>Fixed Markup: ₹1,000 per visa × 28 = ₹28,000</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span class="category-name">📦 Packages</span>
+                                <span class="category-amount">₹32,640</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 26%; background: #f59e0b;"></div>
+                            </div>
+                            <div class="breakdown-details">
+                                <span>Fixed Markup: ₹2,000 per package × 16 = ₹32,000 + Add-ons: ₹640</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span class="category-name">🏨 Hotels</span>
+                                <span class="category-amount">₹12,300</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 10%; background: #8b5cf6;"></div>
+                            </div>
+                            <div class="breakdown-details">
+                                <span>Commission: 5% on ₹246,000 bookings</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span class="category-name">🎯 Activities</span>
+                                <span class="category-amount">₹4,200</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 3%; background: #ec4899;"></div>
+                            </div>
+                            <div class="breakdown-details">
+                                <span>Commission: 7% on ₹60,000 activity bookings</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span class="category-name">🚗 Transfers</span>
+                                <span class="category-amount">₹2,100</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 2%; background: #06b6d4;"></div>
+                            </div>
+                            <div class="breakdown-details">
+                                <span>Commission: 10% on ₹21,000 transfer bookings</span>
+                            </div>
+                        </div>
+
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span class="category-name">🛡️ Insurance</span>
+                                <span class="category-amount">₹1,400</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 1%; background: #ef4444;"></div>
+                            </div>
+                            <div class="breakdown-details">
+                                <span>Commission: 8% on ₹17,500 insurance premiums</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Transaction Table -->
+                <div class="card glass-card">
+                    <h2>Top Transactions This Period</h2>
+                    <table class="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Service Type</th>
+                                <th>Base Amount</th>
+                                <th>Markup/Commission</th>
+                                <th>Profit</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#FLT-8934</td>
+                                <td>Flight Booking</td>
+                                <td>₹24,500</td>
+                                <td>₹500 (fixed)</td>
+                                <td class="amount-positive">₹500</td>
+                                <td>2026-07-05</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#PKG-5621</td>
+                                <td>Tour Package</td>
+                                <td>₹55,000</td>
+                                <td>₹2,000 (fixed)</td>
+                                <td class="amount-positive">₹2,000</td>
+                                <td>2026-07-05</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#VIS-3421</td>
+                                <td>Visa Processing</td>
+                                <td>₹8,500</td>
+                                <td>₹1,000 (fixed)</td>
+                                <td class="amount-positive">₹1,000</td>
+                                <td>2026-07-04</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#HOT-7234</td>
+                                <td>Hotel Booking</td>
+                                <td>₹18,900</td>
+                                <td>₹945 (5%)</td>
+                                <td class="amount-positive">₹945</td>
+                                <td>2026-07-04</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#ACT-4156</td>
+                                <td>Activity Booking</td>
+                                <td>₹12,000</td>
+                                <td>₹840 (7%)</td>
+                                <td class="amount-positive">₹840</td>
+                                <td>2026-07-03</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- AI REVENUE ENGINE TAB -->
+            <section id="revenue" class="tab-content">
+                <div class="tab-header">
+                    <h1>🤖 AI Revenue Engine - Pricing Strategy</h1>
+                    <div class="strategy-toggle">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="pricing-mode" checked>
+                            <span class="toggle-label">
+                                <span class="toggle-text">Dynamic Pricing</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pricing Mode Indicator -->
+                <div class="card glass-card pricing-mode-card">
+                    <div class="mode-indicator">
+                        <h3>Current Mode: <span id="mode-name">Fixed Markup Rules</span></h3>
+                        <p id="mode-description">All markups are fixed. Toggle to enable dynamic pricing based on demand, urgency, and ticket value.</p>
+                    </div>
+                </div>
+
+                <!-- Pricing Rules Configuration -->
+                <div class="pricing-grid">
+                    <div class="card glass-card">
+                        <h3>✈️ Flight Pricing Rules</h3>
+                        <div class="rule-item">
+                            <label>Base Markup</label>
+                            <div class="input-group">
+                                <input type="number" id="flight-base" value="500" min="0">
+                                <span class="unit">₹</span>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <label>Dynamic Adjustment Range</label>
+                            <div class="dynamic-range">
+                                <span id="flight-min">0%</span>
+                                <input type="range" id="flight-range" min="-50" max="100" value="0">
+                                <span id="flight-max">100%</span>
+                            </div>
+                            <small>Applied based on ticket value (₹0-₹10k: base, ₹10k-₹30k: +30%, ₹30k+: +60%)</small>
+                        </div>
+                        <div class="rule-stats">
+                            <div class="stat">
+                                <span class="stat-label">Expected Monthly</span>
+                                <span class="stat-value">₹45,200</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Transactions</span>
+                                <span class="stat-value">245</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card glass-card">
+                        <h3>🛂 Visa Pricing Rules</h3>
+                        <div class="rule-item">
+                            <label>Base Markup</label>
+                            <div class="input-group">
+                                <input type="number" id="visa-base" value="1000" min="0">
+                                <span class="unit">₹</span>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <label>Urgency Multiplier</label>
+                            <div class="urgency-options">
+                                <label><input type="radio" name="visa-urgency" value="1"> Standard (5-7 days)</label>
+                                <label><input type="radio" name="visa-urgency" value="1.25"> Express (2-3 days)</label>
+                                <label><input type="radio" name="visa-urgency" value="1.5" checked> Urgent (24 hours)</label>
+                            </div>
+                        </div>
+                        <div class="rule-stats">
+                            <div class="stat">
+                                <span class="stat-label">Expected Monthly</span>
+                                <span class="stat-value">₹28,000</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Transactions</span>
+                                <span class="stat-value">28</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card glass-card">
+                        <h3>📦 Package Pricing Rules</h3>
+                        <div class="rule-item">
+                            <label>Base Markup</label>
+                            <div class="input-group">
+                                <input type="number" id="package-base" value="2000" min="0">
+                                <span class="unit">₹</span>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <label>Seasonal Adjustment</label>
+                            <div class="seasonal-options">
+                                <label><input type="radio" name="package-season" value="0.8"> Off-season (-20%)</label>
+                                <label><input type="radio" name="package-season" value="1"> Peak Season</label>
+                                <label><input type="radio" name="package-season" value="1.3" checked> High Demand (+30%)</label>
+                            </div>
+                        </div>
+                        <div class="rule-stats">
+                            <div class="stat">
+                                <span class="stat-label">Expected Monthly</span>
+                                <span class="stat-value">₹32,640</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Transactions</span>
+                                <span class="stat-value">16</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card glass-card">
+                        <h3>🏨 Hotel Commission Rules</h3>
+                        <div class="rule-item">
+                            <label>Commission Rate</label>
+                            <div class="input-group">
+                                <input type="number" id="hotel-commission" value="5" min="0" max="100" step="0.5">
+                                <span class="unit">%</span>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <label>Tiered Commission</label>
+                            <div class="tier-item">
+                                <span>✓ ₹0-₹15k: 4%</span>
+                            </div>
+                            <div class="tier-item">
+                                <span>✓ ₹15k-₹50k: 5%</span>
+                            </div>
+                            <div class="tier-item">
+                                <span>✓ ₹50k+: 6%</span>
+                            </div>
+                        </div>
+                        <div class="rule-stats">
+                            <div class="stat">
+                                <span class="stat-label">Expected Monthly</span>
+                                <span class="stat-value">₹12,300</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Total Bookings</span>
+                                <span class="stat-value">₹246,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Recommendation Engine -->
+                <div class="card glass-card ai-recommendations">
+                    <h3>🤖 AI Recommendations</h3>
+                    <div class="recommendations-list">
+                        <div class="recommendation high-priority">
+                            <div class="rec-icon">📈</div>
+                            <div class="rec-content">
+                                <h4>Increase Flight Markups</h4>
+                                <p>High-value flights (₹30k+) show 40% higher demand. Recommend dynamic pricing: base ₹500 → ₹800 for premium tickets.</p>
+                                <div class="rec-stats">
+                                    <span>Potential Revenue Increase: ₹7,200/month</span>
+                                </div>
+                            </div>
+                            <button class="btn-apply">Apply</button>
+                        </div>
+
+                        <div class="recommendation medium-priority">
+                            <div class="rec-icon">🎯</div>
+                            <div class="rec-content">
+                                <h4>Optimize Package Pricing</h4>
+                                <p>Peak season detected. Current +30% adjustment is optimal. Monitor competitor pricing weekly.</p>
+                                <div class="rec-stats">
+                                    <span>Current Performance: Excellent ✓</span>
+                                </div>
+                            </div>
+                            <button class="btn-apply">Maintain</button>
+                        </div>
+
+                        <div class="recommendation high-priority">
+                            <div class="rec-icon">🛂</div>
+                            <div class="rec-content">
+                                <h4>Visa Urgent Service Premium</h4>
+                                <p>85% of visas require express/urgent processing. Recommend increasing urgency multiplier from 1.5x to 1.75x.</p>
+                                <div class="rec-stats">
+                                    <span>Potential Revenue Increase: ₹4,200/month</span>
+                                </div>
+                            </div>
+                            <button class="btn-apply">Apply</button>
+                        </div>
+
+                        <div class="recommendation medium-priority">
+                            <div class="rec-icon">🏨</div>
+                            <div class="rec-content">
+                                <h4>Hotel Commission Analysis</h4>
+                                <p>Tier-based commission is performing well. Competitor average is 5.2%. Current strategy is competitive.</p>
+                                <div class="rec-stats">
+                                    <span>Recommendation: Keep Current Strategy</span>
+                                </div>
+                            </div>
+                            <button class="btn-apply">Monitor</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary">💾 Save Pricing Rules</button>
+                    <button class="btn btn-secondary">📊 Generate Revenue Report</button>
+                </div>
+            </section>
+
+            <!-- REFUND MANAGEMENT TAB -->
+            <section id="refunds" class="tab-content">
+                <div class="tab-header">
+                    <h1>↩️ Refund Management Dashboard</h1>
+                    <div class="refund-filter">
+                        <select id="refund-status">
+                            <option value="all">All Refunds</option>
+                            <option value="pending" selected>Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="processed">Processed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Refund Summary -->
+                <div class="summary-grid">
+                    <div class="summary-card pending">
+                        <div class="card-icon">⏳</div>
+                        <div class="card-content">
+                            <span class="card-label">Pending Refunds</span>
+                            <span class="card-value">₹<span id="pending-refunds">18,540</span></span>
+                            <span class="card-change">12 requests</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card approved">
+                        <div class="card-icon">✅</div>
+                        <div class="card-content">
+                            <span class="card-label">Approved This Month</span>
+                            <span class="card-value">₹<span id="approved-refunds">45,200</span></span>
+                            <span class="card-change">28 refunds</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card rejected">
+                        <div class="card-icon">❌</div>
+                        <div class="card-content">
+                            <span class="card-label">Rejected/Cancelled</span>
+                            <span class="card-value">₹<span id="rejected-refunds">8,900</span></span>
+                            <span class="card-change">5 requests</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card processed">
+                        <div class="card-icon">💳</div>
+                        <div class="card-content">
+                            <span class="card-label">Processed This Week</span>
+                            <span class="card-value">₹<span id="processed-refunds">12,300</span></span>
+                            <span class="card-change">8 refunds</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refund Requests Table -->
+                <div class="card glass-card">
+                    <h2>Refund Requests</h2>
+                    <div class="refund-table-wrapper">
+                        <table class="refund-table">
+                            <thead>
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Amount</th>
+                                    <th>Reason</th>
+                                    <th>Date Requested</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="refund-pending">
+                                    <td>#REF-2847</td>
+                                    <td>Sarah Mitchell</td>
+                                    <td>Flight ✈️</td>
+                                    <td>₹24,500</td>
+                                    <td>Flight Cancelled</td>
+                                    <td>2026-07-05</td>
+                                    <td><span class="badge warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn-action approve">Approve</button>
+                                        <button class="btn-action reject">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr class="refund-pending">
+                                    <td>#REF-2846</td>
+                                    <td>Ahmed Hassan</td>
+                                    <td>Hotel 🏨</td>
+                                    <td>₹8,900</td>
+                                    <td>Duplicate Booking</td>
+                                    <td>2026-07-05</td>
+                                    <td><span class="badge warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn-action approve">Approve</button>
+                                        <button class="btn-action reject">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr class="refund-approved">
+                                    <td>#REF-2845</td>
+                                    <td>Maria Garcia</td>
+                                    <td>Package 📦</td>
+                                    <td>₹32,000</td>
+                                    <td>Poor Service Quality</td>
+                                    <td>2026-07-04</td>
+                                    <td><span class="badge success">Approved</span></td>
+                                    <td>
+                                        <button class="btn-action">Process</button>
+                                    </td>
+                                </tr>
+                                <tr class="refund-processed">
+                                    <td>#REF-2844</td>
+                                    <td>James Wu</td>
+                                    <td>Visa 🛂</td>
+                                    <td>₹9,500</td>
+                                    <td>Visa Rejection</td>
+                                    <td>2026-07-03</td>
+                                    <td><span class="badge success">Processed</span></td>
+                                    <td>
+                                        <span class="status-complete">✓ Completed</span>
+                                    </td>
+                                </tr>
+                                <tr class="refund-rejected">
+                                    <td>#REF-2843</td>
+                                    <td>Sophie Laurent</td>
+                                    <td>Activity 🎯</td>
+                                    <td>₹4,200</td>
+                                    <td>Customer Changed Mind</td>
+                                    <td>2026-07-02</td>
+                                    <td><span class="badge danger">Rejected</span></td>
+                                    <td>
+                                        <span class="status-complete">✓ Closed</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Automated Refund Rules -->
+                <div class="card glass-card">
+                    <h2>⚙️ Automated Refund Rules</h2>
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <h4>Flight Cancellation</h4>
+                            <div class="rule-content">
+                                <p><strong>Condition:</strong> Flight cancelled by airline or customer with 48hr+ notice</p>
+                                <p><strong>Auto-refund:</strong> 100% full refund (including markup)</p>
+                                <p><strong>Timeline:</strong> Approve within 2 hours</p>
+                                <toggle class="auto-toggle" checked>
+                                    <input type="checkbox" checked>
+                                    <span>Auto-approve enabled</span>
+                                </toggle>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <h4>Hotel No-Show</h4>
+                            <div class="rule-content">
+                                <p><strong>Condition:</strong> Hotel booking cancelled within 24hrs of check-in</p>
+                                <p><strong>Auto-refund:</strong> 75% refund (25% cancellation fee applies)</p>
+                                <p><strong>Timeline:</strong> Manual review required</p>
+                                <toggle class="auto-toggle">
+                                    <input type="checkbox">
+                                    <span>Auto-approve disabled</span>
+                                </toggle>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <h4>Package Cancellation</h4>
+                            <div class="rule-content">
+                                <p><strong>Condition:</strong> Full package cancelled 15+ days before travel</p>
+                                <p><strong>Auto-refund:</strong> 100% less 10% processing fee</p>
+                                <p><strong>Timeline:</strong> Approve within 24 hours</p>
+                                <toggle class="auto-toggle" checked>
+                                    <input type="checkbox" checked>
+                                    <span>Auto-approve enabled</span>
+                                </toggle>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <h4>Visa Rejection</h4>
+                            <div class="rule-content">
+                                <p><strong>Condition:</strong> Visa application rejected by embassy</p>
+                                <p><strong>Auto-refund:</strong> 50% refund (50% processing cost retained)</p>
+                                <p><strong>Timeline:</strong> Approve within 4 hours</p>
+                                <toggle class="auto-toggle" checked>
+                                    <input type="checkbox" checked>
+                                    <span>Auto-approve enabled</span>
+                                </toggle>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary">📄 Generate Refund Report</button>
+                    <button class="btn btn-secondary">⚙️ Configure Auto-Rules</button>
+                </div>
+            </section>
+
+            <!-- AGENCY PAYOUTS TAB -->
+            <section id="payouts" class="tab-content">
+                <div class="tab-header">
+                    <h1>🏦 Agency Payout System</h1>
+                    <div class="payout-filter">
+                        <select id="payout-status">
+                            <option value="all">All Agencies</option>
+                            <option value="pending" selected>Pending Payout</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Payout Summary -->
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <div class="card-icon">💰</div>
+                        <div class="card-content">
+                            <span class="card-label">Total Commission Earned</span>
+                            <span class="card-value">₹<span id="total-commission">487,320</span></span>
+                            <span class="card-change">This fiscal year</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon">⏳</div>
+                        <div class="card-content">
+                            <span class="card-label">Pending Payout</span>
+                            <span class="card-value">₹<span id="pending-payout">124,500</span></span>
+                            <span class="card-change">To 8 agencies</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon">📅</div>
+                        <div class="card-content">
+                            <span class="card-label">Scheduled This Week</span>
+                            <span class="card-value">₹<span id="scheduled-payout">68,900</span></span>
+                            <span class="card-change">5 agencies</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon">✓</div>
+                        <div class="card-content">
+                            <span class="card-label">Processed This Month</span>
+                            <span class="card-value">₹<span id="processed-payout">234,100</span></span>
+                            <span class="card-change">12 payouts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agency Payout Status Table -->
+                <div class="card glass-card">
+                    <h2>Agency Commission & Payout Status</h2>
+                    <div class="payout-table-wrapper">
+                        <table class="payout-table">
+                            <thead>
+                                <tr>
+                                    <th>Agency Name</th>
+                                    <th>Total Commission</th>
+                                    <th>Pending Payout</th>
+                                    <th>Last Paid</th>
+                                    <th>Next Scheduled</th>
+                                    <th>Payout Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="payout-pending">
+                                    <td>
+                                        <div class="agency-info">
+                                            <div class="agency-name">Wanderlust Travels</div>
+                                            <div class="agency-ref">Agency ID: AGN-001</div>
+                                        </div>
+                                    </td>
+                                    <td>₹128,540</td>
+                                    <td>₹32,135</td>
+                                    <td>2026-06-15</td>
+                                    <td>2026-07-15</td>
+                                    <td><span class="badge warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn-action primary">Pay Now</button>
+                                    </td>
+                                </tr>
+                                <tr class="payout-pending">
+                                    <td>
+                                        <div class="agency-info">
+                                            <div class="agency-name">Global Expeditions</div>
+                                            <div class="agency-ref">Agency ID: AGN-002</div>
+                                        </div>
+                                    </td>
+                                    <td>₹95,320</td>
+                                    <td>₹28,900</td>
+                                    <td>2026-06-20</td>
+                                    <td>2026-07-20</td>
+                                    <td><span class="badge warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn-action primary">Pay Now</button>
+                                    </td>
+                                </tr>
+                                <tr class="payout-scheduled">
+                                    <td>
+                                        <div class="agency-info">
+                                            <div class="agency-name">Adventure Park Tours</div>
+                                            <div class="agency-ref">Agency ID: AGN-003</div>
+                                        </div>
+                                    </td>
+                                    <td>₹67,840</td>
+                                    <td>₹0</td>
+                                    <td>2026-06-10</td>
+                                    <td>2026-07-10</td>
+                                    <td><span class="badge info">Scheduled</span></td>
+                                    <td>
+                                        <button class="btn-action">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr class="payout-completed">
+                                    <td>
+                                        <div class="agency-info">
+                                            <div class="agency-name">Dream Destinations</div>
+                                            <div class="agency-ref">Agency ID: AGN-004</div>
+                                        </div>
+                                    </td>
+                                    <td>₹142,200</td>
+                                    <td>₹0</td>
+                                    <td>2026-07-05</td>
+                                    <td>2026-08-05</td>
+                                    <td><span class="badge success">Completed</span></td>
+                                    <td>
+                                        <button class="btn-action">View Invoice</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Settlement Report Generator -->
+                <div class="card glass-card">
+                    <h2>📊 Settlement Report Generator</h2>
+                    <div class="report-generator">
+                        <div class="report-options">
+                            <div class="option-group">
+                                <label>Report Type</label>
+                                <select id="report-type">
+                                    <option value="monthly">Monthly Settlement</option>
+                                    <option value="quarterly">Quarterly Summary</option>
+                                    <option value="annual">Annual Report</option>
+                                    <option value="custom">Custom Date Range</option>
+                                </select>
+                            </div>
+
+                            <div class="option-group">
+                                <label>Select Agencies</label>
+                                <div class="agency-select">
+                                    <label><input type="checkbox" checked> All Agencies</label>
+                                    <label><input type="checkbox"> Wanderlust Travels</label>
+                                    <label><input type="checkbox"> Global Expeditions</label>
+                                    <label><input type="checkbox"> Adventure Park Tours</label>
+                                </div>
+                            </div>
+
+                            <div class="option-group">
+                                <label>Include Details</label>
+                                <div class="details-select">
+                                    <label><input type="checkbox" checked> Commission Breakdown</label>
+                                    <label><input type="checkbox" checked> Transaction List</label>
+                                    <label><input type="checkbox"> Tax Summary</label>
+                                    <label><input type="checkbox"> Payment History</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="report-actions">
+                            <button class="btn btn-primary">📄 Generate PDF Report</button>
+                            <button class="btn btn-secondary">📊 Download Excel</button>
+                            <button class="btn btn-secondary">📧 Email to Agencies</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payout History -->
+                <div class="card glass-card">
+                    <h2>📜 Recent Payout History</h2>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Payout ID</th>
+                                <th>Agency</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Date</th>
+                                <th>Settlement Period</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#PAY-5234</td>
+                                <td>Dream Destinations</td>
+                                <td>₹42,300</td>
+                                <td>Bank Transfer</td>
+                                <td>2026-07-05</td>
+                                <td>July 2026</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#PAY-5233</td>
+                                <td>Adventure Park Tours</td>
+                                <td>₹28,500</td>
+                                <td>Bank Transfer</td>
+                                <td>2026-07-04</td>
+                                <td>July 2026</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#PAY-5232</td>
+                                <td>Global Expeditions</td>
+                                <td>₹35,200</td>
+                                <td>Bank Transfer</td>
+                                <td>2026-07-01</td>
+                                <td>June 2026</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#PAY-5231</td>
+                                <td>Wanderlust Travels</td>
+                                <td>₹38,100</td>
+                                <td>Bank Transfer</td>
+                                <td>2026-06-28</td>
+                                <td>June 2026</td>
+                                <td><span class="badge success">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="business-dashboard.js"></script>
+</body>
+</html>
