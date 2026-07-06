@@ -1,0 +1,666 @@
+/* =============================================
+   GLOBAL LAYOUT & THEME (Foundation)
+   ============================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-bg: #0a0f24;
+    --glass-bg: rgba(30, 41, 59, 0.5);
+    --glass-border: rgba(0, 191, 255, 0.2);
+    --neon-blue: #00bfff;
+    --neon-green: #00ff00;
+    --neon-red: #ff1744;
+    --neon-amber: #ffa500;
+    --text-primary: #ffffff;
+    --text-secondary: #b0c4de;
+    --shadow-glow: 0 0 20px rgba(0, 191, 255, 0.3);
+    --shadow-subtle: 0 0 15px rgba(0, 191, 255, 0.2);
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+.dashboard-container {
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =============================================
+   SECTION A: TOP NAVIGATION & GLOBAL METRICS BAR
+   ============================================= */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-subtle);
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.live-indicator-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.digital-clock {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.live-badge {
+    font-size: 14px;
+    color: var(--neon-green);
+    font-weight: 900;
+    letter-spacing: 1px;
+    animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px var(--neon-green);
+    }
+    50% {
+        opacity: 0.6;
+        text-shadow: 0 0 5px var(--neon-green);
+    }
+}
+
+.global-metrics {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.metric-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(0, 191, 255, 0.05);
+    border: 1px solid rgba(0, 191, 255, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    background: rgba(0, 191, 255, 0.1);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.metric-icon {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.metric-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.metric-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--neon-blue);
+    font-family: 'Courier New', monospace;
+}
+
+/* =============================================
+   SECTION B: MAIN FINANCIAL PULSE
+   ============================================= */
+
+.financial-pulse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .financial-pulse {
+        grid-template-columns: 1fr;
+    }
+}
+
+.finance-card {
+    padding: 30px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+.finance-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+    opacity: 0.5;
+}
+
+.finance-card h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.finance-amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.amount-value {
+    font-size: 42px;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+}
+
+.growth-indicator {
+    font-size: 18px;
+    color: #00dd00;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.glass-chart {
+    width: 100%;
+    height: 150px;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.2));
+}
+
+/* =============================================
+   SECTION C: LIVE OPERATIONS & PENDING VISAS
+   ============================================= */
+
+.operations-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .operations-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pending-visas-queue,
+.activity-feed {
+    padding: 25px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.pending-visas-queue h3,
+.activity-feed h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(0, 191, 255, 0.2);
+    padding-bottom: 12px;
+}
+
+.visa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.visa-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.visa-list::-webkit-scrollbar-track {
+    background: rgba(0, 191, 255, 0.05);
+    border-radius: 3px;
+}
+
+.visa-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 191, 255, 0.3);
+    border-radius: 3px;
+}
+
+.visa-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 191, 255, 0.5);
+}
+
+.visa-item {
+    padding: 12px;
+    background: rgba(0, 191, 255, 0.05);
+    border-left: 3px solid var(--neon-blue);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.visa-item:hover {
+    background: rgba(0, 191, 255, 0.1);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.visa-item.in-review {
+    border-left-color: var(--neon-amber);
+}
+
+.visa-item.urgent {
+    border-left-color: var(--neon-red);
+    background: rgba(255, 23, 68, 0.05);
+}
+
+.visa-item.completed {
+    border-left-color: #00dd00;
+    opacity: 0.8;
+}
+
+.visa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.visa-id {
+    font-weight: bold;
+    color: var(--neon-blue);
+    font-family: 'Courier New', monospace;
+}
+
+.visa-status {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.in-review-tag {
+    background: rgba(255, 165, 0, 0.2);
+    color: var(--neon-amber);
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.3);
+}
+
+.urgent-tag {
+    background: rgba(255, 23, 68, 0.2);
+    color: var(--neon-red);
+    box-shadow: 0 0 8px rgba(255, 23, 68, 0.3);
+    animation: pulse-red 2s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.completed-tag {
+    background: rgba(0, 221, 0, 0.2);
+    color: #00dd00;
+    box-shadow: 0 0 8px rgba(0, 221, 0, 0.3);
+}
+
+.visa-applicant {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.visa-type {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.activity-feed {
+    padding: 25px;
+}
+
+.feed-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.feed-item {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    border-left: 2px solid var(--neon-blue);
+    border-radius: 4px;
+    animation: slide-in 0.5s ease-out;
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.feed-time {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--neon-blue);
+    font-weight: bold;
+    min-width: 45px;
+}
+
+.feed-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* =============================================
+   SECTION D: INTERACTION HUB (LIVE CHAT PREVIEW)
+   ============================================= */
+
+.interaction-hub {
+    padding: 25px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-subtle);
+    margin-top: 20px;
+}
+
+.interaction-hub h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(0, 191, 255, 0.2);
+    padding-bottom: 12px;
+}
+
+.chat-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(0, 191, 255, 0.05);
+    border: 1px solid rgba(0, 191, 255, 0.15);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.chat-row:hover {
+    background: rgba(0, 191, 255, 0.1);
+    box-shadow: var(--shadow-glow);
+    transform: translateX(5px);
+}
+
+.user-avatar {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 191, 255, 0.3), rgba(0, 191, 255, 0.1));
+    border: 2px solid rgba(0, 191, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: var(--neon-blue);
+    position: relative;
+}
+
+.user-avatar.online::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: var(--neon-green);
+    border: 2px solid var(--primary-bg);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--neon-green);
+}
+
+.chat-preview {
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-user {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.chat-message {
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-visualizer {
+    display: flex;
+    align-items: center;
+    min-width: 80px;
+}
+
+.waveform {
+    display: flex;
+    gap: 3px;
+    height: 30px;
+    align-items: flex-end;
+}
+
+.wave {
+    width: 3px;
+    background: linear-gradient(180deg, var(--neon-blue), rgba(0, 191, 255, 0.3));
+    border-radius: 2px;
+    animation: wave-animation 0.6s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+}
+
+.wave:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.wave:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.wave:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+@keyframes wave-animation {
+    0%, 100% {
+        height: 8px;
+    }
+    50% {
+        height: 25px;
+    }
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .global-metrics {
+        justify-content: center;
+    }
+
+    .dashboard-container {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .financial-pulse,
+    .operations-section {
+        grid-template-columns: 1fr;
+    }
+
+    .amount-value {
+        font-size: 32px;
+    }
+
+    .digital-clock {
+        font-size: 18px;
+    }
+
+    .chat-row {
+        flex-wrap: wrap;
+    }
+
+    .chat-visualizer {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metric-card {
+        padding: 12px 15px;
+    }
+
+    .amount-value {
+        font-size: 24px;
+    }
+
+    .finance-card {
+        padding: 20px;
+    }
+
+    .metric-label {
+        font-size: 10px;
+    }
+
+    .metric-value {
+        font-size: 16px;
+    }
+}
+
+/* =============================================
+   SCROLLBAR STYLING (Global)
+   ============================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 191, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 191, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 191, 255, 0.5);
+}
